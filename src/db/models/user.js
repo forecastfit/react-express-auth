@@ -34,6 +34,8 @@ class User {
     const query = `INSERT INTO users (username, password_hash)
       VALUES (?, ?) RETURNING *`;
     const { rows: [user] } = await knex.raw(query, [username, passwordHash]);
+    // const result = await knex.raw(query, [username, passwordHash]);
+    // const user = result.rows[0];
     return new User(user);
   }
 
